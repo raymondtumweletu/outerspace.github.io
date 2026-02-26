@@ -1,0 +1,211 @@
+<!-- /C:/xampp/htdocs/outerspac+e/src/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.1/css/all.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+    <title>home</title>
+</head>
+<body class="text-slate-300 bg-[#12131a]">
+    <header>
+        <nav class="bg-[#181a22] hidden md:flex flex-row align-center justify-between px-6 py-4 border-b border-gray-800">
+            <div>
+                <a href="./index.html" class="text-slate-100 text-3xl font-bold p-4 inline-block">OuterSpace</a>
+            </div>
+            <ul>
+                <li class="inline-block p-4 text-slate-200"><a href="./index.html">Home</a></li>
+                <li class="inline-block p-4 text-slate-200"><a href="./#">About</a></li>
+                <li class="inline-block p-4 text-slate-200"><a href="./#">Contact</a></li>       
+            </ul>
+        </nav>
+        
+        <!-- mobile nav--->
+        <nav class="fixed bottom-0 left-0 w-full bg-[#181a22] md:hidden z-50 border-t border-gray-800">
+            <ul class="flex flex-row justify-between items-center w-full px-2 h-16">
+
+                <li class="flex-1">
+                    <a href="./index.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
+                        <i class="fa-light fa-house text-lg"></i>
+                        <span class="text-[10px] capitalize font-medium mt-1">home</span>
+                    </a>
+                </li>
+
+                <li class="flex-1">
+                    <a href="./reports.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
+                        <i class="fa-light fa-magnifying-glass text-lg"></i>
+                        <span class="text-[10px] capitalize font-medium mt-1">reports</span>
+                    </a>
+                </li>
+
+                <li class="flex-1 flex flex-col items-center">
+                    <a href="./expenses.html" class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-700 to-purple-700 shadow-lg border-2 border-gray-900 transition-transform active:scale-95">
+                        <i class="fa-light fa-plus text-white text-xl"></i>
+                    </a>
+                    <span class="text-[10px] capitalize font-medium mt-1 text-slate-200">create</span>
+                </li>
+
+                <li class="flex-1">
+                    <a href="./budget.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
+                        <i class="fa-thin fa-chart-pie-simple text-lg"></i>
+                        <span class="text-[10px] capitalize font-medium mt-1">budget</span>
+                    </a>
+                </li>
+
+                <li class="flex-1">
+                    <a href="./profile.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
+                        <i class="fa-light fa-user text-lg"></i>
+                        <span class="text-[10px] capitalize font-medium mt-1">profile</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- main content -->
+    <!--top nav-->
+    <section>
+        <div class=" w-full h-16 flex items-center px-4">
+            <span><a href="./index.html"><i class="fas fa-angle-left text-slate-400"></i></a>
+            </span>
+        </div>
+    </section>
+
+        <!--top section-->
+        <section class="flex justify-between items-center px-4">
+            <div>
+                <h2 class="text-3xl font-bold text-slate-300 tracking-tight mt-1">Add Expense</h2>
+                <!-- Container to hold the styled date input -->
+                <div class="mt-4 relative flex flex-row items-center w-full">
+                    <i class="fas fa-calendar-days text-slate-400"></i>
+                    <!-- Pretty Display Input -->
+                    <input 
+                        type="text" 
+                        id="dateDisplay"
+                        readonly
+                        class="w-full bg-inherit px-4 py-3 
+                            rounded-xl text-slate-200 
+                            focus:outline-none focus:ring-2 focus:ring-blue-500/40 
+                            cursor-pointer transition-all"
+                    >
+                    <!-- Hidden Real Date Input -->
+                    <input 
+                        type="date" 
+                        id="realDate"
+                        name="calendar-date"
+                        class="hidden"
+                    >
+                </div>
+                <script>
+                    const displayInput = document.getElementById('dateDisplay');
+                    const realInput = document.getElementById('realDate');
+
+                    function formatDate(dateValue) {
+                        const date = new Date(dateValue);
+                        return date.toLocaleDateString('en-GB', {
+                            weekday: 'long',
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                    }
+
+                    // Open native date picker when clicking display input
+                    displayInput.addEventListener('click', () => {
+                        realInput.showPicker();
+                    });
+
+                    // Update formatted display when user selects a date
+                    realInput.addEventListener('change', () => {
+                        displayInput.value = formatDate(realInput.value);
+                    });
+
+                    // Initialize with today's date
+                    const today = new Date().toISOString().split('T')[0];
+                    realInput.value = today;
+                    displayInput.value = formatDate(today);
+                </script>
+            </div>
+        </section>
+
+        <!--amount -->
+        <section class="p-4">
+            <h1 class="capitalize mb-2">amount</h1>
+            <div class="relative mb-2">
+                <input 
+                type="text" 
+                id="amountInput"
+                placeholder="MKW 0.00" 
+                class="w-full max-w-sm bg-inherit px-4 py-3 border border-1 rounded-lg text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all bg-[#1d1e2a] border-slate-600"
+                >
+            </div>
+            <!--script for formating the entered figures in amount input-->
+            <script>
+                const amountInput = document.getElementById('amountInput');
+                
+                amountInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/[^\d.]/g, '');
+                
+                if (value) {
+                    const parts = value.split('.');
+                    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                    value = 'MKW ' + parts.join('.');
+                }
+                
+                e.target.value = value || 'MKW ';
+                });
+            </script>
+            <!--horizontal progress bar-->
+            <div>
+                <p>You have x amount left in your food budget</p>
+                <div class="w-full bg-gray-700 h-2 rounded-full mt-2">
+                    <div class="bg-purple-500 h-2 rounded-full w-1/4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!--category -->
+        <section class="p-4 mt-2"> 
+            <h1 class="capitalize mb-4 text-sm font-semibold text-slate-100">category</h1>
+            <div class="relative mb-6 w-full">
+                <i class="fas fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                <select 
+                    id="categoryInput"
+                    class="w-full bg-[#1d1e2a] px-4 pr-12 py-3 border border-slate-600 rounded-lg text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all appearance-none cursor-pointer"
+                >
+                    <option value="" disabled selected>select category</option>
+                    <option value="food">Food</option>
+                    <option value="taxi">Taxi</option>
+                    <option value="rent">Rent</option>
+                    <option value="entertainment">Entertainment</option>
+                </select>
+            </div>
+            <div class="flex flex-row gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                <button class="bg-[#1d1e2a] px-4 py-2 rounded-lg min-w-fit flex items-center justify-center gap-2 border border-gray-800 hover:border-blue-500/50 hover:bg-[#252636] transition-all text-sm text-slate-300">
+                    <i class="fas fa-burger text-orange-400"></i><span>Food</span>
+                </button>
+                <button class="bg-[#1d1e2a] px-4 py-2 rounded-lg min-w-fit flex items-center justify-center gap-2 border border-gray-800 hover:border-blue-500/50 hover:bg-[#252636] transition-all text-sm text-slate-300">
+                    <i class="fas fa-taxi text-blue-400"></i><span>Taxi</span>
+                </button>
+                <button class="bg-[#1d1e2a] px-4 py-2 rounded-lg min-w-fit flex items-center justify-center gap-2 border border-gray-800 hover:border-blue-500/50 hover:bg-[#252636] transition-all text-sm text-slate-300">
+                    <i class="fas fa-house text-green-400"></i><span>Rent</span>
+                </button>
+                <button class="bg-[#1d1e2a] px-4 py-2 rounded-lg min-w-fit flex items-center justify-center gap-2 border border-gray-800 hover:border-blue-500/50 hover:bg-[#252636] transition-all text-sm text-slate-300">
+                    <i class="fas fa-film text-purple-400"></i><span>Entertainment</span>
+                </button>
+            </div>
+        </section>
+    </section>
+
+    <!--Notes-->
+    <section class="p-4">
+        <h2 class="text-lg font-bold text-white mb-2">Monthly Overview</h2>
+        <textarea placeholder="Add notes..." class="w-full bg-[#1d1e2a] px-4 py-3 rounded-lg text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-all border border-gray-800 mb-2 h-36 resize-none"></textarea>
+        <button class="mt-2 bg-gradient-to-r from-blue-700 to-purple-700 hover:bg-blue-400 text-slate-200 px-4 py-2 rounded-lg transition-colors">Save expense</button>
+    </section>
+
+
+</body>
+</html>
