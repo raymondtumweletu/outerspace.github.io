@@ -1,202 +1,401 @@
-<!-- /C:/xampp/htdocs/outerspac+e/src/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.1/css/all.css">
-        <script src="https://cdn.tailwindcss.com"></script>
-    <title>home</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.1/css/all.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>OuterSpace — Home</title>
+    <style>
+        * { font-family: 'DM Sans', sans-serif; }
+        .mono { font-family: 'DM Mono', monospace; }
+
+        body {
+            background-color: #0f1018;
+            background-image:
+                radial-gradient(ellipse 60% 40% at 70% 10%, rgba(99,70,200,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 30% at 10% 80%, rgba(59,130,246,0.06) 0%, transparent 50%);
+        }
+
+        /* Donut chart */
+        .donut-ring { transition: stroke-dashoffset 0.6s ease; }
+
+        /* Nav active state */
+        .nav-active i, .nav-active span { color: #fff; }
+        .nav-active i { filter: drop-shadow(0 0 6px rgba(139,92,246,0.7)); }
+
+        /* Card shimmer border */
+        .card-glow {
+            background: linear-gradient(135deg, #1a1b26, #1d1e2d);
+            border: 1px solid rgba(99,102,241,0.15);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+        }
+
+        /* Transaction hover */
+        .tx-row { transition: background 0.15s ease; }
+        .tx-row:hover { background: rgba(255,255,255,0.035); }
+
+        /* Fade-in stagger */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.5s ease both; }
+        .delay-1 { animation-delay: 0.08s; }
+        .delay-2 { animation-delay: 0.16s; }
+        .delay-3 { animation-delay: 0.24s; }
+        .delay-4 { animation-delay: 0.32s; }
+
+        /* Summary stat pill */
+        .stat-pill {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+
+        /* Desktop sidebar */
+        .sidebar-link { transition: background 0.15s, color 0.15s; }
+        .sidebar-link:hover { background: rgba(255,255,255,0.05); color: #fff; }
+        .sidebar-link.active { background: rgba(139,92,246,0.15); color: #c4b5fd; border-left: 2px solid #8b5cf6; }
+    </style>
 </head>
-<body class="text-slate-300 bg-[#12131a]">
-    <header>
-        <nav class="bg-[#181a22] hidden md:flex flex-row align-center justify-between px-6 py-4 border-b border-gray-800">
+<body class="text-slate-300 min-h-screen">
+
+    <!-- ===== DESKTOP LAYOUT ===== -->
+    <div class="hidden md:flex min-h-screen">
+
+        <!-- Sidebar -->
+        <aside class="w-60 shrink-0 bg-[#13141d] border-r border-gray-800/60 flex flex-col py-6 px-3 fixed h-full">
+            <a href="./index.html" class="text-white text-2xl font-bold px-3 mb-10 tracking-tight flex items-center gap-2">
+                <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center">
+                    <i class="fa-solid fa-rocket-launch text-white text-xs"></i>
+                </span>
+                OuterSpace
+            </a>
+            <nav class="flex flex-col gap-1 flex-1">
+                <a href="./index.html" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium">
+                    <i class="fa-light fa-house w-4 text-center"></i> Home
+                </a>
+                <a href="./reports.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-magnifying-glass w-4 text-center"></i> Reports
+                </a>
+                <a href="./expenses.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-plus w-4 text-center"></i> Create
+                </a>
+                <a href="./budget.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-thin fa-chart-pie-simple w-4 text-center"></i> Budget
+                </a>
+                <a href="./profile.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-user w-4 text-center"></i> Profile
+                </a>
+            </nav>
+            <!-- User chip at bottom -->
+            <div class="flex items-center gap-3 px-3 py-3 rounded-xl stat-pill mt-4">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white">JD</div>
+                <div>
+                    <p class="text-xs font-semibold text-white leading-none">John Doe</p>
+                    <p class="text-[10px] text-slate-500 mt-0.5">Personal Account</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main desktop content -->
+        <main class="ml-60 flex-1 p-8 max-w-4xl">
+            <!-- Greeting -->
+            <div class="fade-up mb-8">
+                <p class="text-slate-500 text-sm">Good morning 👋</p>
+                <h1 class="text-2xl font-bold text-white mt-0.5">Welcome back, John Doe</h1>
+            </div>
+
+            <!-- Stats row -->
+            <div class="grid grid-cols-3 gap-4 mb-8 fade-up delay-1">
+                <div class="card-glow rounded-2xl p-5">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">Total Balance</p>
+                    <p class="mono text-2xl font-bold text-white">MKW 1,900</p>
+                    <p class="text-xs text-emerald-400 mt-1.5 flex items-center gap-1"><i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +15% vs last month</p>
+                </div>
+                <div class="card-glow rounded-2xl p-5">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">Income</p>
+                    <p class="mono text-2xl font-bold text-violet-300">MKW 1,500</p>
+                    <p class="text-xs text-slate-500 mt-1.5">This month</p>
+                </div>
+                <div class="card-glow rounded-2xl p-5">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">Expenses</p>
+                    <p class="mono text-2xl font-bold text-orange-300">MKW 400</p>
+                    <p class="text-xs text-slate-500 mt-1.5">This month</p>
+                </div>
+            </div>
+
+            <!-- Chart + Transactions row -->
+            <div class="grid grid-cols-5 gap-6">
+                <!-- Donut chart -->
+                <div class="col-span-2 card-glow rounded-2xl p-6 fade-up delay-2 flex flex-col items-center">
+                    <h2 class="text-sm font-semibold text-white self-start mb-4">Breakdown</h2>
+                    <div class="relative w-44 h-44">
+                        <svg class="w-full h-full -rotate-90" viewBox="0 0 200 200">
+                            <!-- bg track -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#1e2030" stroke-width="18"/>
+                            <!-- Savings: 800/1900 = 42.1% → 42.1% of 502.65 = 211.6 -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#3b82f6" stroke-width="18"
+                                stroke-dasharray="211.6 502.65" stroke-linecap="butt" class="donut-ring"/>
+                            <!-- Income: 1500/1900 = 78.9% → offset after savings gap; 396.6 -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#a855f7" stroke-width="18"
+                                stroke-dasharray="396.6 502.65" stroke-dashoffset="-215.6" stroke-linecap="butt" class="donut-ring"/>
+                            <!-- Expenses: 400/1900 = 21.1% → 106.05 -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#f97316" stroke-width="18"
+                                stroke-dasharray="106.05 502.65" stroke-dashoffset="-616.2" stroke-linecap="butt" class="donut-ring"/>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wide">Balance</p>
+                            <p class="mono text-xl font-bold text-white">1,900</p>
+                            <p class="text-[10px] text-slate-500">MKW</p>
+                        </div>
+                    </div>
+                    <div class="mt-5 space-y-2 w-full">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span><span class="text-xs text-slate-400">Savings</span></div>
+                            <span class="mono text-xs text-slate-300">MKW 800</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span><span class="text-xs text-slate-400">Income</span></div>
+                            <span class="mono text-xs text-slate-300">MKW 1,500</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span><span class="text-xs text-slate-400">Expenses</span></div>
+                            <span class="mono text-xs text-slate-300">MKW 400</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transactions -->
+                <div class="col-span-3 card-glow rounded-2xl p-6 fade-up delay-3">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-sm font-semibold text-white">Recent Transactions</h2>
+                        <a href="./reports.html" class="text-xs text-violet-400 hover:text-violet-300">View all →</a>
+                    </div>
+                    <div class="space-y-1">
+                        <!-- income -->
+                        <div class="tx-row flex items-center justify-between px-3 py-3 rounded-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-orange-500/10 flex items-center justify-center">
+                                    <i class="fas fa-burger text-orange-400 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-white">Food & Drinks</p>
+                                    <span class="text-[11px] text-slate-500">2 hours ago</span>
+                                </div>
+                            </div>
+                            <span class="mono text-sm font-semibold text-red-400">−MKW 100</span>
+                        </div>
+                        <!-- income -->
+                        <div class="tx-row flex items-center justify-between px-3 py-3 rounded-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                                    <i class="fas fa-taxi text-blue-400 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-white">Transport</p>
+                                    <span class="text-[11px] text-slate-500">5 hours ago</span>
+                                </div>
+                            </div>
+                            <span class="mono text-sm font-semibold text-red-400">−MKW 200</span>
+                        </div>
+                        <!-- income -->
+                        <div class="tx-row flex items-center justify-between px-3 py-3 rounded-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                                    <i class="fas fa-arrow-down text-emerald-400 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-white">Salary</p>
+                                    <span class="text-[11px] text-slate-500">Yesterday</span>
+                                </div>
+                            </div>
+                            <span class="mono text-sm font-semibold text-emerald-400">+MKW 1,500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary note -->
+            <div class="card-glow rounded-2xl p-5 mt-6 fade-up delay-4 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="fa-solid fa-chart-line text-emerald-400 text-xs"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-white mb-0.5">Financial Summary</p>
+                    <p class="text-xs text-slate-400 leading-relaxed">Your total balance is up 15% compared to last month. Savings are on track and income has seen a significant boost. Keep it up!</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <!-- ===== MOBILE LAYOUT ===== -->
+    <div class="md:hidden pb-24">
+
+        <!-- Top greeting bar -->
+        <div class="bg-[#13141d] border-b border-gray-800/60 px-4 py-4 flex items-center justify-between sticky top-0 z-40">
             <div>
-                <a href="./index.html" class="text-slate-100 text-3xl font-bold p-4 inline-block">OuterSpace</a>
+                <p class="text-[11px] text-slate-500">Good morning 👋</p>
+                <h1 class="text-sm font-bold text-white">John Doe</h1>
             </div>
-            <ul>
-                <li class="inline-block p-4 text-slate-200"><a href="./index.html">Home</a></li>
-                <li class="inline-block p-4 text-slate-200"><a href="./#">About</a></li>
-                <li class="inline-block p-4 text-slate-200"><a href="./#">Contact</a></li>       
-            </ul>
-        </nav>
-        
-        <!-- mobile nav--->
-        <nav class="fixed bottom-0 left-0 w-full bg-[#181a22] md:hidden z-50 border-t border-gray-800">
-            <ul class="flex flex-row justify-between items-center w-full px-2 h-16">
-
-                <li class="flex-1">
-                    <a href="./index.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
-                        <i class="fa-light fa-house text-lg"></i>
-                        <span class="text-[10px] capitalize font-medium mt-1">home</span>
-                    </a>
-                </li>
-
-                <li class="flex-1">
-                    <a href="./reports.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
-                        <i class="fa-light fa-magnifying-glass text-lg"></i>
-                        <span class="text-[10px] capitalize font-medium mt-1">reports</span>
-                    </a>
-                </li>
-
-                <li class="flex-1 flex flex-col items-center">
-                    <a href="./expenses.html" class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-700 to-purple-700 shadow-lg border-2 border-gray-900 transition-transform active:scale-95">
-                        <i class="fa-light fa-plus text-white text-xl"></i>
-                    </a>
-                    <span class="text-[10px] capitalize font-medium mt-1 text-slate-200">create</span>
-                </li>
-
-                <li class="flex-1">
-                    <a href="./budget.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
-                        <i class="fa-thin fa-chart-pie-simple text-lg"></i>
-                        <span class="text-[10px] capitalize font-medium mt-1">budget</span>
-                    </a>
-                </li>
-
-                <li class="flex-1">
-                    <a href="./profile.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-colors">
-                        <i class="fa-light fa-user text-lg"></i>
-                        <span class="text-[10px] capitalize font-medium mt-1">profile</span>
-                    </a>
-                </li>
-
-            </ul>
-        </nav>
-    </header>
-    
-    <!-- main content -->
-    <!--welcome banner mobile-->
-    <section>
-        <div class="bg-[#181a22] w-full h-16 flex items-center px-4">
-            <h1 class="text-md font-medium flex items-center gap-2">
-            Welcome back, <span class="text-white font-bold text-base">John Doe</span></h1>
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white">JD</div>
         </div>
-    </section>
 
-    <!--total balance section-->
-    <section class="flex justify-between items-center py-6 px-4 mb-2">
-        <div class="mt-4">
-            <span class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Total Balance</span>
-            <h2 class="text-4xl font-extrabold text-slate-100 tracking-tight mt-1">MKW 1,900</h2>
+        <!-- Balance hero -->
+        <div class="px-4 pt-6 pb-4 fade-up">
+            <p class="text-[11px] uppercase tracking-widest text-slate-500 font-semibold">Total Balance</p>
+            <p class="mono text-4xl font-bold text-white mt-1">MKW 1,900</p>
+            <span class="inline-flex items-center gap-1 text-xs text-emerald-400 mt-1.5">
+                <i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +15% vs last month
+            </span>
         </div>
-    </section>
 
-    <!--progress bar -->
-    <section class="flex justify-center items-center p-8 mb-6">
-        <div class="relative w-48 h-48">
-            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
-                <!-- Background circle -->
-                <circle cx="100" cy="100" r="90" fill="none" stroke="#2d2e3a" stroke-width="12"/>
-                
-                <!-- Savings (MKW 800) - 42% -->
-                <circle cx="100" cy="100" r="90" fill="none" stroke="#3b82f6" stroke-width="12" 
-                    stroke-dasharray="237.6 565.5" stroke-linecap="round"/>
-                
-                <!-- Income (MKW 1,500) - 79% -->
-                <circle cx="100" cy="100" r="90" fill="none" stroke="#a855f7" stroke-width="12" 
-                    stroke-dasharray="446.8 565.5" stroke-dashoffset="-237.6" stroke-linecap="round"/>
-                
-                <!-- Expenses (MKW 400) - 21% -->
-                <circle cx="100" cy="100" r="90" fill="none" stroke="#f97316" stroke-width="12" 
-                    stroke-dasharray="118.8 565.5" stroke-dashoffset="-684.4" stroke-linecap="round"/>
-            </svg>
-            
-            <!-- Center text -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center">
-                <p class="text-gray-400 text-sm">Total Balance</p>
-                <p class="text-2xl font-bold text-white">MKW 1,900</p>
+        <!-- Stat pills -->
+        <div class="px-4 grid grid-cols-2 gap-3 mb-6 fade-up delay-1">
+            <div class="card-glow rounded-xl p-4">
+                <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-1">Income</p>
+                <p class="mono text-lg font-bold text-violet-300">MKW 1,500</p>
+            </div>
+            <div class="card-glow rounded-xl p-4">
+                <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-1">Expenses</p>
+                <p class="mono text-lg font-bold text-orange-300">MKW 400</p>
             </div>
         </div>
-        
-        <!-- Legend -->
-        <div class="ml-8 space-y-3">
-            <div class="flex items-center gap-2">
-                <div class="w-4 h-4 rounded-full bg-blue-500"></div>
-                <span class="text-sm text-gray-300">Savings: MKW 800</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <div class="w-4 h-4 rounded-full bg-purple-500"></div>
-                <span class="text-sm text-gray-300">Income: MKW 1,500</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <div class="w-4 h-4 rounded-full bg-orange-500"></div>
-                <span class="text-sm text-gray-300">Expenses: MKW 400</span>
-            </div>
-        </div>
-    </section>
 
-    <!--welcome banner mobile
-    <section class="flex flex-row gap-4 mb-6 overflow-x-auto pb-2 scrollbar-hide">
-        <div class="bg-[#1d1e2a] p-4 rounded-xl min-w-[160px] flex-1 border border-gray-800">
-            <h2 class="text-gray-400 text-sm capitalize">Savings</h2>
-            <p class="text-xl font-bold text-white mt-1">MKW 800</p>
-        </div>
-        
-        <div class="bg-[#1d1e2a] p-4 rounded-xl min-w-[160px] flex-1 border border-gray-800">
-            <h2 class="text-gray-400 text-sm capitalize">Income</h2>
-            <p class="text-xl font-bold text-white mt-1">MKW 1,500</p>
-        </div>
-
-        <div class="bg-[#1d1e2a] p-4 rounded-xl min-w-[160px] flex-1 border border-gray-800">
-            <h2 class="text-gray-400 text-sm capitalize">Expenses</h2>
-            <p class="text-xl font-bold text-white mt-1">MKW 400</p>
-        </div>
-    </section>
-    -->
-
-    <!--monthly overview-->
-    <section class="bg-[#1d1e2a] p-6 rounded-xl border border-gray-800 mb-4">
-        <h2 class="text-lg font-bold text-white mb-2">Monthly Overview</h2>
-            <p class="text-gray-400 leading-relaxed text-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus nemo at blanditiis voluptates molestiae voluptatem fugit, modi voluptas eos molestias cupiditate quas facilis?
-            </p>
-    </section>  
-
-    <!--recent transactions-->
-    <section class="max-w-md mx-auto p-4 text-white mb-16">
-        <h1 class="text-xl font-bold mb-4">Recent Transactions</h1>
-        <div class="bg-[#1d1e2a] rounded-lg overflow-hidden border border-gray-800">
-                <div class="flex items-center justify-between p-4 border-b border-gray-800 hover:bg-[#252636] transition-colors">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center">
-                            <i class="fas fa-burger text-orange-400"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium">Transaction 1</p>
-                            <span class="text-xs text-gray-400">2 hours ago</span>
-                        </div>
+        <!-- Donut chart -->
+        <div class="mx-4 card-glow rounded-2xl p-5 mb-4 fade-up delay-2">
+            <h2 class="text-sm font-semibold text-white mb-4">Breakdown</h2>
+            <div class="flex items-center gap-6">
+                <div class="relative w-36 h-36 shrink-0">
+                    <svg class="w-full h-full -rotate-90" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#1e2030" stroke-width="22"/>
+                        <!-- Savings 42.1% -->
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#3b82f6" stroke-width="22"
+                            stroke-dasharray="211.6 502.65" stroke-linecap="butt"/>
+                        <!-- Income 78.9% -->
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#a855f7" stroke-width="22"
+                            stroke-dasharray="396.6 502.65" stroke-dashoffset="-215.6" stroke-linecap="butt"/>
+                        <!-- Expenses 21.1% -->
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#f97316" stroke-width="22"
+                            stroke-dasharray="106.05 502.65" stroke-dashoffset="-616.2" stroke-linecap="butt"/>
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <p class="mono text-lg font-bold text-white">1,900</p>
+                        <p class="text-[10px] text-slate-500">MKW</p>
                     </div>
-                    <span class="font-semibold text-green-400">MKW 100</span>
                 </div>
-
-                <div class="flex items-center justify-between p-4 border-b border-gray-800 hover:bg-[#252636] transition-colors">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center">
-                            <i class="fas fa-taxi text-blue-400"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium">Transaction 2</p>
-                            <span class="text-xs text-gray-400">5 hours ago</span>
-                        </div>
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex items-center gap-2 mb-0.5"><span class="w-2 h-2 rounded-full bg-blue-500"></span><span class="text-xs text-slate-400">Savings</span></div>
+                        <p class="mono text-sm font-semibold text-white ml-4">MKW 800</p>
                     </div>
-                    <span class="font-semibold text-green-400">MKW 200</span>
-                </div>
-
-                <div class="flex items-center justify-between p-4 hover:bg-[#252636] transition-colors">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center">
-                            <i class="fas fa-taxi text-blue-400"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium">Transaction 3</p>
-                            <span class="text-xs text-gray-400">Yesterday</span>
-                        </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-0.5"><span class="w-2 h-2 rounded-full bg-violet-500"></span><span class="text-xs text-slate-400">Income</span></div>
+                        <p class="mono text-sm font-semibold text-white ml-4">MKW 1,500</p>
                     </div>
-                    <span class="font-semibold text-green-400">MKW 200</span>
+                    <div>
+                        <div class="flex items-center gap-2 mb-0.5"><span class="w-2 h-2 rounded-full bg-orange-500"></span><span class="text-xs text-slate-400">Expenses</span></div>
+                        <p class="mono text-sm font-semibold text-white ml-4">MKW 400</p>
+                    </div>
                 </div>
+            </div>
         </div>
-    </section>
 
+        <!-- Summary note -->
+        <div class="mx-4 card-glow rounded-2xl p-4 mb-4 flex items-start gap-3 fade-up delay-3">
+            <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-chart-line text-emerald-400 text-[11px]"></i>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">Your balance is up <span class="text-emerald-400 font-semibold">15%</span> vs last month. Savings on track, income boosted. Keep it up!</p>
+        </div>
+
+        <!-- Transactions -->
+        <div class="mx-4 card-glow rounded-2xl overflow-hidden fade-up delay-4">
+            <div class="flex items-center justify-between px-4 pt-4 pb-2">
+                <h2 class="text-sm font-semibold text-white">Recent Transactions</h2>
+                <a href="./reports.html" class="text-xs text-violet-400">View all →</a>
+            </div>
+            <!-- expense -->
+            <div class="tx-row flex items-center justify-between px-4 py-3 border-t border-gray-800/60">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-orange-500/10 flex items-center justify-center">
+                        <i class="fas fa-burger text-orange-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-white">Food & Drinks</p>
+                        <span class="text-[11px] text-slate-500">2 hours ago</span>
+                    </div>
+                </div>
+                <span class="mono text-sm font-semibold text-red-400">−MKW 100</span>
+            </div>
+            <!-- expense -->
+            <div class="tx-row flex items-center justify-between px-4 py-3 border-t border-gray-800/60">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                        <i class="fas fa-taxi text-blue-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-white">Transport</p>
+                        <span class="text-[11px] text-slate-500">5 hours ago</span>
+                    </div>
+                </div>
+                <span class="mono text-sm font-semibold text-red-400">−MKW 200</span>
+            </div>
+            <!-- income -->
+            <div class="tx-row flex items-center justify-between px-4 py-3 border-t border-gray-800/60">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                        <i class="fas fa-arrow-down text-emerald-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-white">Salary</p>
+                        <span class="text-[11px] text-slate-500">Yesterday</span>
+                    </div>
+                </div>
+                <span class="mono text-sm font-semibold text-emerald-400">+MKW 1,500</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===== MOBILE BOTTOM NAV ===== -->
+    <nav class="fixed bottom-0 left-0 w-full bg-[#13141d]/95 backdrop-blur md:hidden z-50 border-t border-gray-800/60">
+        <ul class="flex flex-row justify-between items-center w-full px-2 h-16">
+            <li class="flex-1">
+                <a href="./index.html" class="nav-active flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-house text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Home</span>
+                </a>
+            </li>
+            <li class="flex-1">
+                <a href="./reports.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-magnifying-glass text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Reports</span>
+                </a>
+            </li>
+            <li class="flex-1 flex flex-col items-center">
+                <a href="./expenses.html" class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 shadow-lg shadow-violet-900/40 border-2 border-[#0f1018] transition-transform active:scale-95">
+                    <i class="fa-light fa-plus text-white text-xl"></i>
+                </a>
+                <span class="text-[10px] font-medium mt-1 text-slate-400">Create</span>
+            </li>
+            <li class="flex-1">
+                <a href="./budget.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-thin fa-chart-pie-simple text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Budget</span>
+                </a>
+            </li>
+            <li class="flex-1">
+                <a href="./profile.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-user text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
 </body>
 </html>
