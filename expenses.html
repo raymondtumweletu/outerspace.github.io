@@ -5,329 +5,396 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.1/css/all.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <title>OuterSpace — Add Expense</title>
+    <title>OuterSpace — Budget</title>
 </head>
 <body class="text-slate-300 min-h-screen">
 
-<!-- ===== DESKTOP LAYOUT ===== -->
-<div class="hidden md:flex min-h-screen">
+    <!-- ===== DESKTOP LAYOUT ===== -->
+    <div class="hidden md:flex min-h-screen">
 
-    <!-- Sidebar (matches index.html) -->
-    <aside class="w-60 shrink-0 bg-[#13141d] border-r border-gray-800/60 flex flex-col py-6 px-3 fixed h-full">
-        <a href="./index.html" class="text-white text-2xl font-bold px-3 mb-10 tracking-tight flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center">
-                <i class="fa-solid fa-rocket-launch text-white text-xs"></i>
-            </span>
-            OuterSpace
-        </a>
-        <nav class="flex flex-col gap-1 flex-1">
-            <a href="./index.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
-                <i class="fa-light fa-house w-4 text-center"></i> Home
+        <!-- Sidebar -->
+        <aside class="w-60 shrink-0 bg-[#13141d] border-r border-gray-800/60 flex flex-col py-6 px-3 fixed h-full">
+            <a href="./index.html" class="text-white text-2xl font-bold px-3 mb-10 tracking-tight flex items-center gap-2">
+                <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center">
+                    <i class="fa-solid fa-rocket-launch text-white text-xs"></i>
+                </span>
+                OuterSpace
             </a>
-            <a href="./reports.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
-                <i class="fa-light fa-magnifying-glass w-4 text-center"></i> Reports
-            </a>
-            <a href="./expenses.html" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium">
-                <i class="fa-light fa-plus w-4 text-center"></i> Create
-            </a>
-            <a href="./budget.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
-                <i class="fa-thin fa-chart-pie-simple w-4 text-center"></i> Budget
-            </a>
-            <a href="./profile.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
-                <i class="fa-light fa-user w-4 text-center"></i> Profile
-            </a>
-        </nav>
-        <div class="flex items-center gap-3 px-3 py-3 rounded-xl bg-white/[0.04] border border-white/[0.07] mt-4">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white">JD</div>
-            <div>
-                <p class="text-xs font-semibold text-white leading-none">John Doe</p>
-                <p class="text-[10px] text-slate-500 mt-0.5">Personal Account</p>
+            <nav class="flex flex-col gap-1 flex-1">
+                <a href="./index.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-house w-4 text-center"></i> Home
+                </a>
+                <a href="./reports.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-magnifying-glass w-4 text-center"></i> Reports
+                </a>
+                <a href="./expenses.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-plus w-4 text-center"></i> Create
+                </a>
+                <a href="./budget.html" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium">
+                    <i class="fa-thin fa-chart-pie-simple w-4 text-center"></i> Budget
+                </a>
+                <a href="./profile.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-user w-4 text-center"></i> Profile
+                </a>
+            </nav>
+            <!-- User chip at bottom -->
+            <div class="flex items-center gap-3 px-3 py-3 rounded-xl stat-pill mt-4">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white">JD</div>
+                <div>
+                    <p class="text-xs font-semibold text-white leading-none">John Doe</p>
+                    <p class="text-[10px] text-slate-500 mt-0.5">Personal Account</p>
+                </div>
             </div>
-        </div>
-    </aside>
+        </aside>
 
-    <!-- Desktop main -->
-    <main class="ml-60 flex-1 p-8 max-w-2xl">
-        <div class="fade-up mb-8">
-            <a href="./index.html" class="text-slate-500 hover:text-slate-300 text-sm flex items-center gap-1.5 mb-4 transition-colors">
-                <i class="fas fa-angle-left text-xs"></i> Back
-            </a>
-            <h1 class="text-2xl font-bold text-white">Add Expense</h1>
-        </div>
+        <!-- Main desktop content -->
+        <main class="ml-60 flex-1 p-8">
+            <!-- Greeting -->
+            <div class="fade-up mb-8">
+                <h1 class="text-2xl font-bold text-white mt-0.5">Budget</h1>
+            </div>
 
-        <form id="expenseForm" class="space-y-5" onsubmit="handleSave(event)">
-            <!-- Date -->
-            <div class="card-glow rounded-2xl p-5 fade-up delay-1">
-                <label class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-3">Date</label>
-                <div class="relative flex items-center gap-3">
-                    <i class="fas fa-calendar-days text-slate-500 text-sm"></i>
-                    <input type="text" id="dateDisplayDesktop" readonly
-                        class="field-input cursor-pointer" style="background:transparent;border:none;padding:0;box-shadow:none;flex:1;">
-                    <input type="date" id="realDateDesktop" class="hidden">
+            <!-- Total Income & Misc Funds -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="card-glow rounded-2xl p-6 fade-up">
+                    <label class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-4">Total monthly Income</label>
+                    <input type="number" placeholder="0.00" class="w-full px-4 py-2 bg-gray-800/40 rounded-lg text-white text-base placeholder-slate-600" id="totalIncomeInputDesktop">
+                </div>
+                <div class="card-glow rounded-2xl p-6 fade-up">
+                    <label class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-4">Misc Funds</label>
+                    <input type="number" placeholder="0.00" class="w-full px-4 py-2 bg-gray-800/40 rounded-lg text-white text-base placeholder-slate-600" id="miscFundsInputDesktop">
                 </div>
             </div>
 
-            <!-- Amount -->
-            <div class="card-glow rounded-2xl p-5 fade-up delay-2">
-                <label class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-3">Amount</label>
-                <input type="text" id="amountInputDesktop" placeholder="MKW 0.00"
-                    class="field-input mono text-lg">
-                <div id="budgetBarDesktop" class="mt-4 hidden">
-                    <div class="flex justify-between text-xs text-slate-500 mb-1.5">
-                        <span id="budgetLabelDesktop">Budget remaining</span>
-                        <span id="budgetPctDesktop"></span>
+            <!-- Categories Form -->
+            <form class="card-glow rounded-2xl p-6 fade-up delay-2 mb-16" id="budgetFormDesktop">
+                <label class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-4">Categories</label>
+                <div class="grid grid-cols-2 gap-3 mb-6" id="categoryListDesktop">
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-burger text-orange-400"></i>
+                            <span class="text-sm text-white">Food</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="food">
                     </div>
-                    <div class="w-full bg-gray-800 h-1.5 rounded-full">
-                        <div id="budgetFillDesktop" class="h-1.5 rounded-full bg-violet-500 transition-all duration-500" style="width:75%"></div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-taxi text-blue-400"></i>
+                            <span class="text-sm text-white">Transport</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="taxi">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-house text-green-400"></i>
+                            <span class="text-sm text-white">Rent</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="rent">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-film text-purple-400"></i>
+                            <span class="text-sm text-white">Entertainment</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="entertainment">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-soap text-cyan-400"></i>
+                            <span class="text-sm text-white">Toiletries</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="toiletries">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-flask text-red-400"></i>
+                            <span class="text-sm text-white">Healthcare</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="healthcare">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-bolt text-yellow-400"></i>
+                            <span class="text-sm text-white">Utilities</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="utilities">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-book text-indigo-400"></i>
+                            <span class="text-sm text-white">Education</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="education">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-shirt text-pink-400"></i>
+                            <span class="text-sm text-white">Clothing</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="clothing">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-mobile text-slate-400"></i>
+                            <span class="text-sm text-white">Phone Bill</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="phonebill">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-wifi text-blue-500"></i>
+                            <span class="text-sm text-white">Internet</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="internet">
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-800/40 rounded-lg">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-car text-gray-400"></i>
+                            <span class="text-sm text-white">Car Insurance</span>
+                        </div>
+                        <input type="number" placeholder="0.00" class="category-input w-24 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="carinsurance">
                     </div>
                 </div>
-            </div>
-
-            <!-- Category -->
-            <div class="card-glow rounded-2xl p-5 fade-up delay-3">
-                <label class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-3">Category</label>
-                <div class="flex flex-wrap gap-2" id="categoryBtnsDesktop">
-                    <button type="button" class="category-btn" data-value="food" onclick="selectCategory('food','Desktop')">
-                        <i class="fas fa-burger text-orange-400"></i> Food
-                    </button>
-                    <button type="button" class="category-btn" data-value="taxi" onclick="selectCategory('taxi','Desktop')">
-                        <i class="fas fa-taxi text-blue-400"></i> Taxi
-                    </button>
-                    <button type="button" class="category-btn" data-value="rent" onclick="selectCategory('rent','Desktop')">
-                        <i class="fas fa-house text-green-400"></i> Rent
-                    </button>
-                    <button type="button" class="category-btn" data-value="entertainment" onclick="selectCategory('entertainment','Desktop')">
-                        <i class="fas fa-film text-purple-400"></i> Entertainment
-                    </button>
+                <div class="flex gap-4">
+                    <button type="button" class="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium rounded-lg transition-colors" onclick="document.getElementById('budgetFormDesktop').reset()">Clear All</button>
+                    <button type="submit" class="flex-1 px-4 py-2 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white text-sm font-medium rounded-lg transition-colors">Save</button>
                 </div>
-            </div>
-
-            <!-- Notes -->
-            <div class="card-glow rounded-2xl p-5 fade-up delay-4">
-                <label class="block text-xs uppercase tracking-widest text-slate-500 font-semibold mb-3">Notes</label>
-                <textarea placeholder="Add a note about this expense..."
-                    class="field-input resize-none h-28"></textarea>
-            </div>
-
-            <button type="submit"
-                class="fade-up w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold text-sm shadow-lg shadow-violet-900/30 hover:opacity-90 active:scale-[0.99] transition-all">
-                Save Expense
-            </button>
-        </form>
-    </main>
-</div>
+            </form>
+        </main>
+    </div>
 
 
-<!-- ===== MOBILE LAYOUT ===== -->
-<div class="md:hidden pb-28">
+    <!-- ===== MOBILE LAYOUT ===== -->
+    <div class="md:hidden pb-24">
 
-    <!-- Top bar -->
+        <!-- Top bar -->
         <div class="bg-[#13141d] border-b border-gray-800/60 px-4 py-4 flex items-center justify-between sticky top-0 z-40">
                 <div class="flex flex-row items-center gap-4">
-                    <a href="./index.html" class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                    <a href="./index.html" class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center" aria-label="Go back to home">
                     <i class="fas fa-angle-left text-slate-400 text-sm"></i>
                     </a>
-                    <h1 class="text-lg font-bold text-white">Expenses</h1>
+                    <h1 class="text-lg font-bold text-white">Budget</h1>
                 </div>                      
-            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white">JD</div>
         </div>
-  
-
-    <form id="expenseFormMobile" class="px-4 pt-5 space-y-4" onsubmit="handleSave(event)">
-
-        <!-- Date -->
-        <div class="card-glow rounded-2xl p-4 fade-up">
-            <label class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">Date</label>
-            <div class="flex items-center gap-3">
-                <i class="fas fa-calendar-days text-slate-500 text-sm"></i>
-                <input type="text" id="dateDisplayMobile" readonly
-                    class="flex-1 bg-transparent text-slate-200 text-sm focus:outline-none cursor-pointer">
-                <input type="date" id="realDateMobile" class="hidden">
-            </div>
-        </div>
-
-        <!-- Amount -->
-        <div class="card-glow rounded-2xl p-4 fade-up delay-1">
-            <label class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">Amount</label>
-            <input type="text" id="amountInputMobile" placeholder="MKW 0.00"
-                class="field-input mono text-xl font-bold">
-            <div id="budgetBarMobile" class="mt-3 hidden">
-                <div class="flex justify-between text-xs text-slate-500 mb-1.5">
-                    <span id="budgetLabelMobile">Budget remaining</span>
-                    <span id="budgetPctMobile"></span>
+        
+        <section class="p-4 ">
+            <!-- Total Income & Misc Funds -->
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="card-glow rounded-2xl p-4 fade-up">
+                    <label class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-3">Total monthly Income</label>
+                    <input type="number" placeholder="0.00" class="w-full px-3 py-2 bg-gray-800/40 rounded-lg text-white text-sm placeholder-slate-600" id="totalIncomeInput">
                 </div>
-                <div class="w-full bg-gray-800 h-1.5 rounded-full">
-                    <div id="budgetFillMobile" class="h-1.5 rounded-full bg-violet-500 transition-all duration-500" style="width:75%"></div>
+                <div class="card-glow rounded-2xl p-4 fade-up">
+                    <label class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-3">Misc Funds</label>
+                    <input type="number" placeholder="0.00" class="w-full px-3 py-2 bg-gray-800/40 rounded-lg text-white text-sm placeholder-slate-600" id="miscFundsInput">
                 </div>
             </div>
-        </div>
-
-        <!-- Category -->
-        <div class="card-glow rounded-2xl p-4 fade-up delay-2">
-            <label class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-3">Category</label>
-            <div class="flex flex-row gap-2 overflow-x-auto no-scrollbar pb-1" id="categoryBtnsMobile">
-                <button type="button" class="category-btn" data-value="food" onclick="selectCategory('food','Mobile')">
-                    <i class="fas fa-burger text-orange-400"></i> Food
-                </button>
-                <button type="button" class="category-btn" data-value="taxi" onclick="selectCategory('taxi','Mobile')">
-                    <i class="fas fa-taxi text-blue-400"></i> Taxi
-                </button>
-                <button type="button" class="category-btn" data-value="rent" onclick="selectCategory('rent','Mobile')">
-                    <i class="fas fa-house text-green-400"></i> Rent
-                </button>
-                <button type="button" class="category-btn" data-value="entertainment" onclick="selectCategory('entertainment','Mobile')">
-                    <i class="fas fa-film text-purple-400"></i> Entertainment
-                </button>
+            
+            <!-- Category -->
+            <form class="card-glow rounded-2xl p-4 fade-up delay-2" id="budgetForm">
+                <label class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-3">Categories</label>
+                <div class="space-y-3" id="categoryListMobile">
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-burger text-orange-400"></i>
+                    <span class="text-sm text-white">Food</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="foodInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="food">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-taxi text-blue-400"></i>
+                    <span class="text-sm text-white">Transport / taxi</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="taxiInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="taxi">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-house text-green-400"></i>
+                    <span class="text-sm text-white">Rent</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="rentInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="rent">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-film text-purple-400"></i>
+                    <span class="text-sm text-white">Entertainment</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="entertainmentInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="entertainment">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-soap text-cyan-400"></i>
+                    <span class="text-sm text-white">Toiletries</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="toiletiesInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="toiletries">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-flask text-red-400"></i>
+                    <span class="text-sm text-white">Healthcare</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="healthcareInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="healthcare">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-bolt text-yellow-400"></i>
+                    <span class="text-sm text-white">Utilities</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="utilitiesInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="utilities">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-book text-indigo-400"></i>
+                    <span class="text-sm text-white">Education</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="educationInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="education">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-shirt text-pink-400"></i>
+                    <span class="text-sm text-white">Clothing</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="clothingInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="clothing">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-mobile text-slate-400"></i>
+                    <span class="text-sm text-white">Phone Bill</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="phonebillInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="phonebill">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-wifi text-blue-500"></i>
+                    <span class="text-sm text-white">Internet</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="internetInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="internet">
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg">
+                    <div class="flex items-center gap-2">
+                    <i class="fas fa-car text-gray-400"></i>
+                    <span class="text-sm text-white">Car Insurance</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                    <span class="text-sm text-slate-500">MKW</span>
+                    <input type="number" id="carinsuranceInput" placeholder="0.00" class="category-input w-20 px-2 py-1 bg-gray-700 rounded text-right text-sm text-white" data-category="carinsurance">
+                    </div>
+                </div>
+                </div>
+                <div class="flex gap-3 mt-4">
+                    <button type="button" class="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium rounded-lg transition-colors" onclick="document.getElementById('budgetForm').reset()">Clear All</button>
+                    <button type="submit" class="flex-1 px-4 py-2 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white text-sm font-medium rounded-lg transition-colors">Save</button>
+                </div>
+            </form>
             </div>
-        </div>
+        </section>
 
-        <!-- Notes -->
-        <div class="card-glow rounded-2xl p-4 fade-up delay-3">
-            <label class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">Notes</label>
-            <textarea placeholder="Add a note about this expense..."
-                class="field-input resize-none h-28 text-sm"></textarea>
-        </div>
-
-        <!-- Save button -->
-        <button type="submit"
-            class="fade-up delay-4 w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold shadow-lg shadow-violet-900/30 hover:opacity-90 active:scale-[0.99] transition-all">
-            Save Expense
-        </button>
-
-    </form>
-</div>
+    </div>
 
 
-<!-- ===== MOBILE BOTTOM NAV ===== -->
-<nav class="fixed bottom-0 left-0 w-full bg-[#13141d]/95 backdrop-blur md:hidden z-50 border-t border-gray-800/60">
-    <ul class="flex flex-row justify-between items-center w-full px-2 h-16">
-        <li class="flex-1">
-            <a href="./index.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
-                <i class="fa-light fa-house text-lg"></i>
-                <span class="text-[10px] font-medium mt-1">Home</span>
-            </a>
-        </li>
-        <li class="flex-1">
-            <a href="./reports.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
-                <i class="fa-light fa-magnifying-glass text-lg"></i>
-                <span class="text-[10px] font-medium mt-1">Reports</span>
-            </a>
-        </li>
-        <li class="flex-1 flex flex-col items-center">
-            <a href="./expenses.html" class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 shadow-lg shadow-violet-900/40 border-2 border-[#0f1018] transition-transform active:scale-95">
-                <i class="fa-light fa-plus text-white text-xl"></i>
-            </a>
-            <span class="text-[10px] font-medium mt-1 text-white">Create</span>
-        </li>
-        <li class="flex-1">
-            <a href="./budget.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
-                <i class="fa-thin fa-chart-pie-simple text-lg"></i>
-                <span class="text-[10px] font-medium mt-1">Budget</span>
-            </a>
-        </li>
-        <li class="flex-1">
-            <a href="./profile.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
-                <i class="fa-light fa-user text-lg"></i>
-                <span class="text-[10px] font-medium mt-1">Profile</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+    <!-- ===== MOBILE BOTTOM NAV ===== -->
+    <nav class="fixed bottom-0 left-0 w-full bg-[#13141d]/95 backdrop-blur md:hidden z-50 border-t border-gray-800/60">
+        <ul class="flex flex-row justify-between items-center w-full px-2 h-16">
+            <li class="flex-1">
+                <a href="./index.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-house text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Home</span>
+                </a>
+            </li>
+            <li class="flex-1">
+                <a href="./reports.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-magnifying-glass text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Reports</span>
+                </a>
+            </li>
+            <li class="flex-1 flex flex-col items-center">
+                <a href="./expenses.html" class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 shadow-lg shadow-violet-900/40 border-2 border-[#0f1018] transition-transform active:scale-95">
+                    <i class="fa-light fa-plus text-white text-xl"></i>
+                </a>
+                <span class="text-[10px] font-medium mt-1 text-slate-400">Create</span>
+            </li>
+            <li class="flex-1">
+                <a href="./budget.html" class="nav-active flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-thin fa-chart-pie-simple text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Budget</span>
+                </a>
+            </li>
+            <li class="flex-1">
+                <a href="./profile.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-user text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-
-<script>
-    // ── Budget data per category ──────────────────────────────────────
-    const budgets = {
-        food:          { total: 5000,  spent: 3750, label: 'Food budget' },
-        taxi:          { total: 2000,  spent: 500,  label: 'Taxi budget' },
-        rent:          { total: 20000, spent: 0,    label: 'Rent budget' },
-        entertainment: { total: 3000,  spent: 2100, label: 'Entertainment budget' },
-    };
-
-    let selectedCategory = null;
-
-    // ── Date pickers ──────────────────────────────────────────────────
-    function formatDate(dateValue) {
-        const [y, m, d] = dateValue.split('-');
-        const date = new Date(y, m - 1, d);
-        return date.toLocaleDateString('en-GB', {
-            weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+   <script>
+    // Handle budget form submission
+    ['budgetForm', 'budgetFormDesktop'].forEach(formId => {
+      const form = document.getElementById(formId);
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const budget = {};
+          form.querySelectorAll('[data-category]').forEach(input => {
+            const category = input.getAttribute('data-category');
+            const value = parseFloat(input.value) || 0;
+            if (value > 0) budget[category] = value;
+          });
+          localStorage.setItem('budget', JSON.stringify(budget));
+          alert('Budget saved successfully!');
         });
-    }
+      }
+    });
 
-    function initDatePicker(displayId, realId) {
-        const display = document.getElementById(displayId);
-        const real    = document.getElementById(realId);
-        if (!display || !real) return;
-        const today = new Date().toISOString().split('T')[0];
-        real.value    = today;
-        display.value = formatDate(today);
-        display.addEventListener('click', () => real.showPicker && real.showPicker());
-        real.addEventListener('change', () => { display.value = formatDate(real.value); });
-    }
-
-    initDatePicker('dateDisplayDesktop', 'realDateDesktop');
-    initDatePicker('dateDisplayMobile',  'realDateMobile');
-
-    // ── Amount formatting ─────────────────────────────────────────────
-    function initAmountInput(inputId) {
-        const input = document.getElementById(inputId);
-        if (!input) return;
-        input.addEventListener('input', (e) => {
-            let raw = e.target.value.replace(/[^\d.]/g, '');
-            if (!raw) { e.target.value = ''; return; }
-            const parts = raw.split('.');
-            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            e.target.value = 'MKW ' + parts.join('.');
+    // Load budget on page load
+    window.addEventListener('load', () => {
+      const saved = localStorage.getItem('budget');
+      if (saved) {
+        const budget = JSON.parse(saved);
+        Object.entries(budget).forEach(([category, value]) => {
+          const inputs = document.querySelectorAll(`[data-category="${category}"]`);
+          inputs.forEach(input => input.value = value);
         });
-    }
-
-    initAmountInput('amountInputDesktop');
-    initAmountInput('amountInputMobile');
-
-    // ── Category selection ────────────────────────────────────────────
-    function selectCategory(value, suffix) {
-        selectedCategory = value;
-
-        // Update button states
-        const container = document.getElementById('categoryBtns' + suffix);
-        container.querySelectorAll('.category-btn').forEach(btn => {
-            btn.classList.toggle('selected', btn.dataset.value === value);
-        });
-
-        // Show budget bar
-        const data = budgets[value];
-        if (data) {
-            const remaining = data.total - data.spent;
-            const pct       = Math.round((remaining / data.total) * 100);
-            const barColor  = pct > 50 ? 'bg-violet-500' : pct > 20 ? 'bg-orange-400' : 'bg-red-500';
-
-            document.getElementById('budgetLabel' + suffix).textContent =
-                `${data.label}: MKW ${remaining.toLocaleString()} left`;
-            document.getElementById('budgetPct' + suffix).textContent = `${pct}%`;
-
-            const fill = document.getElementById('budgetFill' + suffix);
-            fill.style.width = pct + '%';
-            fill.className   = `h-1.5 rounded-full transition-all duration-500 ${barColor}`;
-
-            document.getElementById('budgetBar' + suffix).classList.remove('hidden');
-        }
-    }
-
-    // ── Save handler ──────────────────────────────────────────────────
-    function handleSave(e) {
-        e.preventDefault();
-        // Show a simple feedback toast
-        const toast = document.createElement('div');
-        toast.textContent = '✓ Expense saved';
-        toast.className = 'fixed top-6 left-1/2 -translate-x-1/2 bg-violet-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg z-[100] transition-opacity';
-        document.body.appendChild(toast);
-        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 2000);
-    }
-</script>
-
+      }
+    });
+   </script> 
 </body>
 </html>
