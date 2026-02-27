@@ -5,82 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.1/css/all.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <title>OuterSpace — Add Expense</title>
-    <style>
-        * { font-family: 'DM Sans', sans-serif; }
-        .mono { font-family: 'DM Mono', monospace; }
-
-        body {
-            background-color: #0f1018;
-            background-image:
-                radial-gradient(ellipse 60% 40% at 70% 10%, rgba(99,70,200,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse 40% 30% at 10% 80%, rgba(59,130,246,0.06) 0%, transparent 50%);
-        }
-
-        .card-glow {
-            background: linear-gradient(135deg, #1a1b26, #1d1e2d);
-            border: 1px solid rgba(99,102,241,0.15);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
-        }
-
-        .sidebar-link { transition: background 0.15s, color 0.15s; }
-        .sidebar-link:hover { background: rgba(255,255,255,0.05); color: #fff; }
-        .sidebar-link.active { background: rgba(139,92,246,0.15); color: #c4b5fd; border-left: 2px solid #8b5cf6; }
-
-        .field-input {
-            width: 100%;
-            background: #1a1b26;
-            border: 1px solid rgba(99,102,241,0.2);
-            border-radius: 0.75rem;
-            padding: 0.75rem 1rem;
-            color: #e2e8f0;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            outline: none;
-        }
-        .field-input:focus {
-            border-color: rgba(99,102,241,0.5);
-            box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
-        }
-        .field-input::placeholder { color: #475569; }
-
-        select.field-input { appearance: none; cursor: pointer; }
-        select.field-input option { background: #1a1b26; }
-
-        .category-btn {
-            background: #1a1b26;
-            border: 1px solid rgba(99,102,241,0.15);
-            border-radius: 0.75rem;
-            padding: 0.5rem 1rem;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
-            color: #94a3b8;
-            transition: all 0.15s;
-            cursor: pointer;
-        }
-        .category-btn:hover { border-color: rgba(99,102,241,0.4); background: #1e1f30; color: #e2e8f0; }
-        .category-btn.selected { border-color: #8b5cf6; background: rgba(139,92,246,0.15); color: #c4b5fd; }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .fade-up { animation: fadeUp 0.4s ease both; }
-        .delay-1 { animation-delay: 0.07s; }
-        .delay-2 { animation-delay: 0.14s; }
-        .delay-3 { animation-delay: 0.21s; }
-        .delay-4 { animation-delay: 0.28s; }
-
-        /* hide scrollbar on quick-select row */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .nav-active i, .nav-active span { color: #fff; filter: drop-shadow(0 0 6px rgba(139,92,246,0.7)); }
-    </style>
 </head>
 <body class="text-slate-300 min-h-screen">
 
@@ -197,12 +125,16 @@
 <div class="md:hidden pb-28">
 
     <!-- Top bar -->
-    <div class="bg-[#13141d] border-b border-gray-800/60 px-4 py-4 flex items-center gap-3 sticky top-0 z-40">
-        <a href="./index.html" class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-            <i class="fas fa-angle-left text-slate-400 text-sm"></i>
-        </a>
-        <h1 class="text-base font-bold text-white">Add Expense</h1>
-    </div>
+        <div class="bg-[#13141d] border-b border-gray-800/60 px-4 py-4 flex items-center justify-between sticky top-0 z-40">
+                <div class="flex flex-row items-center gap-4">
+                    <a href="./index.html" class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                    <i class="fas fa-angle-left text-slate-400 text-sm"></i>
+                    </a>
+                    <h1 class="text-lg font-bold text-white">Expenses</h1>
+                </div>                      
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white">JD</div>
+        </div>
+  
 
     <form id="expenseFormMobile" class="px-4 pt-5 space-y-4" onsubmit="handleSave(event)">
 
