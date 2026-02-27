@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.0.1/css/all.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>OuterSpace — Profile</title>
+</head>
+<body class="text-slate-300 min-h-screen">
+
+    <!-- ===== DESKTOP LAYOUT ===== -->
+    <div class="hidden md:flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-60 shrink-0 bg-[#13141d] border-r border-gray-800/60 flex flex-col py-6 px-3 fixed h-full">
+            <a href="./index.html" class="text-white text-2xl font-bold px-3 mb-10 tracking-tight flex items-center gap-2">
+                <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center">
+                    <i class="fa-solid fa-rocket-launch text-white text-xs"></i>
+                </span>
+                OuterSpace
+            </a>
+            <nav class="flex flex-col gap-1 flex-1">
+                <a href="./index.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-house w-4 text-center"></i> Home
+                </a>
+                <a href="./reports.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-magnifying-glass w-4 text-center"></i> Reports
+                </a>
+                <a href="./expenses.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-light fa-plus w-4 text-center"></i> Create
+                </a>
+                <a href="./budget.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400">
+                    <i class="fa-thin fa-chart-pie-simple w-4 text-center"></i> Budget
+                </a>
+                <a href="./profile.html" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium">
+                    <i class="fa-light fa-user w-4 text-center"></i> Profile
+                </a>
+            </nav>
+            <div class="flex items-center gap-3 px-3 py-3 rounded-xl stat-pill mt-4">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white">JD</div>
+                <div>
+                    <p class="text-xs font-semibold text-white leading-none">John Doe</p>
+                    <p class="text-[10px] text-slate-500 mt-0.5">Personal Account</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="ml-60 flex-1 p-8 max-w-4xl">
+            <div class="fade-up mb-8">
+                <p class="text-slate-500 text-sm">Account Settings</p>
+                <h1 class="text-2xl font-bold text-white mt-0.5">Profile</h1>
+            </div>
+
+            <!-- Profile Header -->
+            <div class="card-glow rounded-2xl p-8 mb-8 fade-up delay-1">
+                <div class="flex items-center gap-6 mb-8">
+                    <div class="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-4xl font-bold text-white">JD</div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">John Doe</h2>
+                        <p class="text-slate-400 mt-1">john.doe@example.com</p>
+                        <p class="text-xs text-slate-500 mt-3">Member since January 2024</p>
+                    </div>
+                </div>
+                <button class="px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 text-white font-medium text-sm hover:opacity-90 transition-opacity">Edit Profile</button>
+            </div>
+
+            <!-- Account Information -->
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="card-glow rounded-2xl p-6 fade-up delay-2">
+                    <h3 class="text-sm font-semibold text-white mb-4">Personal Information</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Full Name</p>
+                            <p class="text-sm text-white font-medium">John Doe</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Email</p>
+                            <p class="text-sm text-white font-medium">john.doe@example.com</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Phone</p>
+                            <p class="text-sm text-white font-medium">+1 (555) 123-4567</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Country</p>
+                            <p class="text-sm text-white font-medium">United States</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-glow rounded-2xl p-6 fade-up delay-3">
+                    <h3 class="text-sm font-semibold text-white mb-4">Account Settings</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Account Type</p>
+                            <p class="text-sm text-white font-medium">Personal Account</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Currency</p>
+                            <p class="text-sm text-white font-medium">MKW (Malawi Kwacha)</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Two-Factor Auth</p>
+                            <p class="text-sm text-emerald-400 font-medium">Enabled</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Last Login</p>
+                            <p class="text-sm text-white font-medium">Today at 9:45 AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferences -->
+            <div class="card-glow rounded-2xl p-6 mb-8 fade-up delay-4">
+                <h3 class="text-sm font-semibold text-white mb-6">Preferences</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-white font-medium">Email Notifications</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Receive updates on transactions</p>
+                        </div>
+                        <input type="checkbox" checked class="w-5 h-5 rounded accent-violet-600" />
+                    </div>
+                    <div class="border-t border-gray-800/60 pt-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-white font-medium">Dark Mode</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Use dark theme by default</p>
+                        </div>
+                        <input type="checkbox" checked class="w-5 h-5 rounded accent-violet-600" />
+                    </div>
+                    <div class="border-t border-gray-800/60 pt-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-white font-medium">Budget Alerts</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Alert when approaching budget limit</p>
+                        </div>
+                        <input type="checkbox" checked class="w-5 h-5 rounded accent-violet-600" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="card-glow rounded-2xl p-6 border border-red-900/30 fade-up delay-5">
+                <h3 class="text-sm font-semibold text-red-400 mb-4">Danger Zone</h3>
+                <p class="text-xs text-slate-400 mb-4">These actions cannot be undone</p>
+                <div class="flex gap-3">
+                    <button class="px-4 py-2 rounded-lg border border-red-900/50 text-red-400 font-medium text-sm hover:bg-red-900/10 transition-colors">Change Password</button>
+                    <button class="px-4 py-2 rounded-lg border border-red-900/50 text-red-400 font-medium text-sm hover:bg-red-900/10 transition-colors">Delete Account</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== MOBILE LAYOUT ===== -->
+    <div class="md:hidden pb-24">
+        <!-- Top bar -->
+        <div class="bg-[#13141d] border-b border-gray-800/60 px-4 py-4 flex items-center justify-between sticky top-0 z-40">
+                <div class="flex flex-row items-center gap-4">
+                    <a href="./index.html" class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center" aria-label="Go back to home">
+                    <i class="fas fa-angle-left text-slate-400 text-sm"></i>
+                    </a>
+                    <h1 class="text-lg font-bold text-white">Budget</h1>
+                </div>                      
+        </div>
+
+        <!-- Profile Header -->
+        <div class="px-4 pt-6 pb-4 fade-up">
+            <div class="card-glow rounded-2xl p-6 flex flex-col items-center text-center">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-3xl font-bold text-white mb-4">JD</div>
+                <h2 class="text-lg font-bold text-white">John Doe</h2>
+                <p class="text-xs text-slate-400 mt-1">john.doe@example.com</p>
+                <p class="text-[10px] text-slate-500 mt-3">Member since January 2024</p>
+                <button class="mt-4 px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 text-white font-medium text-xs">Edit Profile</button>
+            </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="px-4 mb-4 fade-up delay-1">
+            <div class="card-glow rounded-2xl p-4">
+                <h3 class="text-sm font-semibold text-white mb-4">Personal Information</h3>
+                <div class="space-y-3">
+                    <div>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Full Name</p>
+                        <p class="text-xs text-white font-medium">John Doe</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Email</p>
+                        <p class="text-xs text-white font-medium">john.doe@example.com</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Phone</p>
+                        <p class="text-xs text-white font-medium">+1 (555) 123-4567</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Country</p>
+                        <p class="text-xs text-white font-medium">United States</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Settings -->
+        <div class="px-4 mb-4 fade-up delay-2">
+            <div class="card-glow rounded-2xl p-4">
+                <h3 class="text-sm font-semibold text-white mb-4">Account Settings</h3>
+                <div class="space-y-3">
+                    <div>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Account Type</p>
+                        <p class="text-xs text-white font-medium">Personal Account</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Currency</p>
+                        <p class="text-xs text-white font-medium">MKW</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wide mb-1">Two-Factor Auth</p>
+                        <p class="text-xs text-emerald-400 font-medium">Enabled</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preferences -->
+        <div class="px-4 mb-4 fade-up delay-3">
+            <div class="card-glow rounded-2xl p-4">
+                <h3 class="text-sm font-semibold text-white mb-3">Preferences</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between py-2">
+                        <p class="text-xs text-white">Email Notifications</p>
+                        <input type="checkbox" checked class="w-4 h-4 rounded accent-violet-600" />
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-t border-gray-800/60 pt-3">
+                        <p class="text-xs text-white">Dark Mode</p>
+                        <input type="checkbox" checked class="w-4 h-4 rounded accent-violet-600" />
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-t border-gray-800/60 pt-3">
+                        <p class="text-xs text-white">Budget Alerts</p>
+                        <input type="checkbox" checked class="w-4 h-4 rounded accent-violet-600" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="px-4 mb-4 fade-up delay-4">
+            <div class="card-glow rounded-2xl p-4 border border-red-900/30">
+                <h3 class="text-xs font-semibold text-red-400 mb-3">Danger Zone</h3>
+                <div class="flex flex-col gap-2">
+                    <button class="px-3 py-1.5 rounded text-[10px] border border-red-900/50 text-red-400 font-medium hover:bg-red-900/10 transition-colors">Change Password</button>
+                    <button class="px-3 py-1.5 rounded text-[10px] border border-red-900/50 text-red-400 font-medium hover:bg-red-900/10 transition-colors">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MOBILE BOTTOM NAV ===== -->
+    <nav class="fixed bottom-0 left-0 w-full bg-[#13141d]/95 backdrop-blur md:hidden z-50 border-t border-gray-800/60">
+        <ul class="flex flex-row justify-between items-center w-full px-2 h-16">
+            <li class="flex-1">
+                <a href="./index.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-house text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Home</span>
+                </a>
+            </li>
+            <li class="flex-1">
+                <a href="./reports.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-magnifying-glass text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Reports</span>
+                </a>
+            </li>
+            <li class="flex-1 flex flex-col items-center">
+                <a href="./expenses.html" class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 shadow-lg shadow-violet-900/40 border-2 border-[#0f1018] transition-transform active:scale-95">
+                    <i class="fa-light fa-plus text-white text-xl"></i>
+                </a>
+                <span class="text-[10px] font-medium mt-1 text-slate-400">Create</span>
+            </li>
+            <li class="flex-1">
+                <a href="./budget.html" class="flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-thin fa-chart-pie-simple text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Budget</span>
+                </a>
+            </li>
+            <li class="flex-1">
+                <a href="./profile.html" class="nav-active flex flex-col items-center text-slate-500 hover:text-white transition-colors">
+                    <i class="fa-light fa-user text-lg"></i>
+                    <span class="text-[10px] font-medium mt-1">Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+</html>
